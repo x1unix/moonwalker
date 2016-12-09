@@ -1,0 +1,287 @@
+// http://moonwalk.co/api/iframe/?type=film&name=aiva%20movie%20player&kp_id=42991&w=1450&h=230&s=moonwalkco&enc=utf-8&nb&nsor&rd=avi.x1unix.com
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" >
+    <link rel="stylesheet" href="http://moonwalk.co/web/css/colorbox.css?v=2" />
+
+    <script type="text/javascript">
+        var reqId = 0;
+        var showTooltip = false;
+        var toolTipContent = "";
+        var contentType = ;
+    </script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="http://moonwalk.co/web/js/jquery_colorbox.js"></script>
+    <script src="http://moonwalk.co/web/js/jquery_simpletip.js"></script>
+    <script type="text/javascript" src="http://moonwalk.co/web/js/advertisment.js"></script>
+
+
+
+    <script type="text/javascript">
+         function sourceChanged(el)
+         {
+            var hiddenEl = document.getElementById("source_changed");
+
+            if (hiddenEl != null && hiddenEl != undefined)
+                hiddenEl.value = "1";
+
+
+            el.form.submit();
+         }
+
+         function formChanged (el)
+         {
+            el.form.submit();
+         }
+
+         function reportProblem ()
+         {
+              $('#problem_hint').hide();
+
+              if ($('#problem_type').val() == -1)
+              {
+                  $('#problem_hint').show();
+              }
+              else
+                xajax_report_problem ($('#problem_type').val() ,$('#problem_text').val() , reqId , $("#encoded_request").val());
+         }
+
+         function successfullySent ()
+         {
+             $('#problem_success').show();
+             $('#problem_success').fadeOut(7000, function() {});
+         }
+
+        function select_text()
+        {
+            var content = document.getElementById ("code_textarea");
+            content.focus();
+            content.select();
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //var par = parent.location.href;
+            var par = (window.location != window.parent.location) ? document.referrer: document.location;
+
+            if (par != null && par != undefined)
+                xajax_update_req (par , reqId);
+
+
+            $(".inline").colorbox({inline:true, top:"50px" , left:"50px" , fixed:true});
+
+            if (document.getElementById("tester") == undefined && contentType == 0)
+            {
+                toolTipContent = "<h1 style='color:red'>Для просмотра контента пожалуйста отключите AdBlock или другую программу блокировки рекламы</h1>";
+                $("#film_table").hide();
+                $(".tooltip").simpletip({ fixed: true, position: [10, 10] ,content:toolTipContent , hideTime:10000});
+                var api = $('.tooltip').eq(0).simpletip();
+                api.show();
+            }
+        });
+    </script>
+
+
+
+<script type="text/javascript" charset="UTF-8">
+/* <![CDATA[ */
+try { if (undefined == xajax.config) xajax.config = {}; } catch (e) { xajax = {}; xajax.config = {}; };
+xajax.config.requestURI = "http://moonwalk.co/Xajax/saveaction/";
+xajax.config.statusMessages = false;
+xajax.config.waitCursor = true;
+xajax.config.version = "xajax 0.5 rc1";
+xajax.config.legacy = false;
+xajax.config.defaultMode = "asynchronous";
+xajax.config.defaultMethod = "POST";
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://moonwalk.co//web/js/xajax_js/xajax_core.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+/* <![CDATA[ */
+window.setTimeout(
+ function() {
+  var scriptExists = false;
+  try { if (xajax.isLoaded) scriptExists = true; }
+  catch (e) {}
+  if (!scriptExists) {
+  }
+ }, 2000);
+/* ]]> */
+</script>
+
+<script type='text/javascript' charset='UTF-8'>
+/* <![CDATA[ */
+xajax_update_req = function() { return xajax.request( { xjxfun: 'update_req' }, { parameters: arguments } ); };
+xajax_report_problem = function() { return xajax.request( { xjxfun: 'report_problem' }, { parameters: arguments } ); };
+/* ]]> */
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="http://moonwalk.co/api/morefunc"></script>
+
+
+    </head>
+<body style="margin:0px;padding:0px;" >
+<span class="tooltip"></span>
+
+
+
+
+
+    <div
+              id="body_div"
+    >
+        <table id="film_table" cellspacing="0" cellpadding="0" >
+
+        <tr style="display:none;">
+            <td colspan="3">
+                <form method="POST" action="/api/iframe/?type=film&amp;name=aiva%20movie%20player&amp;kp_id=42991&amp;w=1450&amp;h=230&amp;s=moonwalkco&amp;enc=utf-8&amp;nb&amp;nsor&amp;rd=avi.x1unix.com">
+                    <select name="link_id" onchange="sourceChanged(this)">
+                                               <option value="998122">
+                              Сервер 0
+                          </option>
+                                         </select>
+                </form>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="3" style="position:relative; z-index:1" >
+                                    <div id="my_player_div">
+
+                                                            <iframe width="1440" height="230" src="http://37.220.36.15/video/327a2776bfd23ed2/iframe" frameborder="0" allowfullscreen></iframe>
+                                                                        </div>
+
+
+
+
+
+
+
+
+
+            </td>
+        </tr>
+
+        <tr style="display:none;">
+            <td>
+               <span class='inline' href="#player_code"><input type="button" value="Код Плеера"></span>
+            </td>
+            <td>
+                <span class='inline' href="#report_problem"><input type="button" value="Мнение о фильме/Проблема"></span>
+            </td>
+            <td>
+                                                                </td>
+        </tr>
+    </table>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+<div style="display:none">
+    <div id='player_code' style='padding:10px; background:#fff;width:400px;height:200px;'>
+        <h2>Код плеера для вставки на сайт</h2>
+        <textarea rows="6" cols="40" style="width:100%" id="code_textarea" onclick="select_text()">&lt;iframe src="http://moonwalk.co/api/iframe/?type=film&name=aiva%20movie%20player&kp_id=42991&w=1450&h=230&s=moonwalkco&enc=utf-8&nb&nsor&rd=avi.x1unix.com" width="1450" height="230" frameborder="0" scrolling="no" &gt;&lt;/iframe&gt;</textarea>
+    </div>
+
+    <div id='report_problem' style='padding:10px; background:#fff;width:450px;height:300px;'>
+        <h2>Обратная связь</h2>
+        <table>
+            <tr>
+                <td>
+                    <span id="problem_hint" style="display:none;color:red;"> Вы не указали тему сообщения!!!!</span>
+                    <span id="problem_success" style="display:none;color:green;"> Сообщение успешно отправлено</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Тима сообщения:*</td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="problem_type">
+                        <option value="-1" selected>Не выбрана</option>
+                        <option value="3">Комментарий к фильму</option>
+                        <option value="0">Видео не работает</option>
+                        <option value="1">Не то видео</option>
+                        <option value="2">Другая проблема</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Сообщение:</td>
+            </tr>
+            <tr>
+                <td>
+                    <textarea rows="5" id="problem_text" style="width:400px"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" value="Отправить" onclick="reportProblem();">
+                    <input type="hidden" value="{'cont':'api','action':'iframe','param1':'','type':'film','name':'aiva movie player','kp_id':'42991','w':'1450','h':'230','s':'moonwalkco','enc':'utf-8','nb':'','nsor':'','rd':'avi.x1unix.com'}" id="encoded_request">
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter27192089 = new Ya.Metrika({id:27192089,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/27192089" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+</html>
