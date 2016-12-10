@@ -14,8 +14,7 @@
     ],
     "autoload": {
       "psr-0": {
-        "MyVendor": "./",
-        "MyPackage": "./"
+        "x1unix\\Moonwalker\\": "src/"
       }
     }
 }
