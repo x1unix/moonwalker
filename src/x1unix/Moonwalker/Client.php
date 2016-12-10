@@ -2,6 +2,9 @@
 namespace x1unix\Moonwalker;
 
 
+use x1unix\Moonwalker\Exceptions\MoonwalkerException;
+use x1unix\Moonwalker\Exceptions\MoonwalkerNotFoundException;
+
 class Client
 {
     private $hostname = '';
@@ -16,10 +19,14 @@ class Client
     }
 
     private function getFrameUrl($kpId) {
-        $script = Grabber::getPlayerScriptByKinopoiskId($kpId);
-        $path = Parser::getFrameUrlFromScript($script);
+        try {
+            $script = Grabber::getPlayerScriptByKinopoiskId($kpId);
+            $path = Parser::getFrameUrlFromScript($script);
 
-        unset($script);
-        return $path;
+            unset($script);
+            return $path;
+        } catch (MoonwalkerException $ex) {
+            throw new MoonwalkerNotFoundException("Failed to get movie: {$ex->getMessage()}");
+        }
     }
 }
