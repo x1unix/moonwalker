@@ -23,7 +23,7 @@ class Grabber
         return $resp;
     }
 
-    public static function getPlayerFrame($src) {
+    public static function getPlayerFrame($url, $cookies=array()) {
 
     }
 }

@@ -8,24 +8,24 @@ use x1unix\Moonwalker\Exceptions\MoonwalkerNotFoundException;
 class Client
 {
     private $hostname = '';
+
     public function __construct($hostname)
     {
         $this->hostname = $hostname;
     }
 
-    public function getMovieByKinopoiskId($kpId) {
-        $frame = $this->getFrameUrl($kpId);
-        return $frame;
+    public function getMovieByKinopoiskId($kpId)
+    {
+        $frame = $this->getFrameUrlByKinopoiskId($kpId);
+
+        // return $frame;
     }
 
-    private function getFrameUrl($kpId) {
 
-        $resp = Grabber::getPlayerScriptByKinopoiskId($kpId);
-        //file_put_contents('./data/player_api', $script);
-        //$script = file_get_contents('./data/player_api');
-        $path = Parser::getFrameUrlFromScript($resp);
+    public function getFrameUrlByKinopoiskId($kpId) {
+        $frmResp = Grabber::getPlayerScriptByKinopoiskId($kpId);
+        $frmUrl = Parser::getFrameUrlFromScript($frmResp);
 
-        unset($script);
-        return $path;
+        return new Models\Result($frmResp, $frmUrl);
     }
 }
