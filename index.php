@@ -6,7 +6,7 @@ require('./vendor/autoload.php');
 use x1unix\Moonwalker;
 session_start();
 
-$c = new Moonwalker\MoonwalkerClient(null);
+$c = new Moonwalker\Client(null);
 $f = $c->getMovieByKinopoiskId(770);
 var_dump($f);
 

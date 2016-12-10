@@ -2,7 +2,7 @@
 namespace x1unix\Moonwalker;
 
 
-class MoonwalkerClient
+class Client
 {
     private $hostname = '';
     public function __construct($hostname)
