@@ -11,5 +11,11 @@
             "name": "x1unix",
             "email": "ascii@live.ru"
         }
-    ]
+    ],
+    "autoload": {
+      "psr-0": {
+        "MyVendor": "./",
+        "MyPackage": "./"
+      }
+    }
 }
