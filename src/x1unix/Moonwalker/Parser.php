@@ -7,7 +7,7 @@ use x1unix\Moonwalker\Exceptions\MoonwalkerException;
 class Parser
 {
     private static $expressions = array(
-        'player_api' => '\'~(http://moonwalk.co/api/iframe/?)([A-Za-z0-9=&_\-\?\s\.]+)~\''
+        'player_api' => '~(http://moonwalk.co/api/iframe/?)([A-Za-z0-9=&_\-\?\s\.]+)~',
     );
 
     public static function getFrameUrlFromScript($script) {

@@ -19,7 +19,10 @@ class Client
     }
 
     private function getFrameUrl($kpId) {
-        $script = Grabber::getPlayerScriptByKinopoiskId($kpId);
+
+        //$script = Grabber::getPlayerScriptByKinopoiskId($kpId);
+        //file_put_contents('./data/player_api', $script);
+        $script = file_get_contents('./data/player_api');
         $path = Parser::getFrameUrlFromScript($script);
 
         unset($script);
