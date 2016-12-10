@@ -1,10 +1,10 @@
 <?php
 
-namespace x1unix\Moonwalker;
+namespace x1unix\Moonwalker\Net;
 
 use GuzzleHttp;
 
-class MoonwalkResponse
+class Response
 {
     private $content = null;
     private $cookies = null;
@@ -31,7 +31,7 @@ class MoonwalkResponse
         return $this->body;
     }
 
-    public function isSuccessfull() {
+    public function isSuccessful() {
         return ($this->status >=200) && ($this->status < 400);
     }
 
