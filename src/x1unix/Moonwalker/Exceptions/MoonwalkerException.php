@@ -1,5 +1,5 @@
 <?php
-namespace x1unix\moonwalker\exceptions;
+namespace x1unix\Moonwalker\Exceptions;
 
 use Exception;
 

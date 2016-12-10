@@ -1,5 +1,5 @@
 <?php
-namespace x1unix\moonwalker;
+namespace x1unix\Moonwalker;
 
 class Grabber
 {
@@ -12,7 +12,7 @@ class Grabber
         // Check response
         $code = $resp->getStatusCode();
 
-        if ($code >= 301) throw new exceptions\MoonwalkerException("Failed to get player script, HTTP Error: {$code}");
+        if ($code >= 301) throw new Exceptions\MoonwalkerException("Failed to get player script, HTTP Error: {$code}");
 
         return $resp->getBody();
     }

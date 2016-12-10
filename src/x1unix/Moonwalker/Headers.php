@@ -1,5 +1,5 @@
 <?php
-namespace x1unix\moonwalker;
+namespace x1unix\Moonwalker;
 
 
 class Headers
