@@ -18,13 +18,19 @@ class Grabber
         // Check response
         $code = $resp->isSuccessful();
 
-        if (!$code) throw new Exceptions\MoonwalkerException("Failed to get player script, HTTP Error: {$resp->getCode()}");
+        if (!$code) throw new Exceptions\MoonwalkerException("Failed to get player script ({$resp->getCode()})");
 
         return $resp;
     }
 
-    public static function getPlayerFrame($url, $cookies=array()) {
+    public static function getPlayerFrame($url) {
+        $req = new Net\Request($url);
+        $resp = $req->get();
 
+        // Check response
+        if (!$resp->isSuccessful()) throw new Exceptions\MoonwalkerException("Failed to get player frame ({$resp->getCode()})");
+
+        return $resp;
     }
 }
 

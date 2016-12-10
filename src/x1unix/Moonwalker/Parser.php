@@ -26,4 +26,14 @@ class Parser
 
         return strval($results[0]);
     }
+
+    public static function getVideoFrameUrlFromHtml(Net\Response $response) {
+        $doc = \phpQuery::newDocument($response->getContent());
+        $frame_src = $doc->find('#my_player_div > iframe')->attr('src');
+
+        // TODO: Add collection of episodes for tv shows, etc.
+
+        unset($doc);
+        return strval($frame_src);
+    }
 }

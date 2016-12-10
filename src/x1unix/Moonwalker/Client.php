@@ -1,10 +1,6 @@
 <?php
 namespace x1unix\Moonwalker;
 
-
-use x1unix\Moonwalker\Exceptions\MoonwalkerException;
-use x1unix\Moonwalker\Exceptions\MoonwalkerNotFoundException;
-
 class Client
 {
     private $hostname = '';
@@ -16,9 +12,9 @@ class Client
 
     public function getMovieByKinopoiskId($kpId)
     {
-        $frame = $this->getFrameUrlByKinopoiskId($kpId);
-
-        // return $frame;
+        return $this->getFrameHtml(
+            $this->getFrameUrlByKinopoiskId($kpId)
+        )->getContent();
     }
 
 
@@ -27,5 +23,14 @@ class Client
         $frmUrl = Parser::getFrameUrlFromScript($frmResp);
 
         return new Models\Result($frmResp, $frmUrl);
+    }
+
+    public function getFrameHtml(Models\Result $frameUrlResult) {
+        $url = $frameUrlResult->getContent();
+
+        $resp = Grabber::getPlayerFrame($url);
+        $frame_url = Parser::getVideoFrameUrlFromHtml($resp);
+
+        return new Models\Result($resp, $frame_url);
     }
 }

@@ -3,7 +3,8 @@
     "description": "PHP Middleware / Grabber for Moonwalk.co",
     "type": "library",
     "require": {
-        "guzzlehttp/guzzle": "^6.2"
+        "guzzlehttp/guzzle": "^6.2",
+        "bariew/phpquery": "^1.0"
     },
     "license": "MIT",
     "authors": [

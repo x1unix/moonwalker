@@ -1,7 +1,6 @@
 <?php
 namespace x1unix\Moonwalker\Net;
 
-
 class Request
 {
     private $url;
@@ -15,16 +14,17 @@ class Request
      * @param string $cookies Cookies
      * @param array $headers Additional Headers
      */
-    public function __construct($url, $cookies='', $headers=array())
+    public function __construct($url, $headers=array(), \GuzzleHttp\Client $client=null)
     {
         $this->headers = array_merge(Headers::getDefaultHeaders(), $headers);
-        $this->headers['Set-Cookie'] = $cookies;
 
         $this->url = $url;
 
-        $this->client = new \GuzzleHttp\Client(array(
-            'headers' => $this->headers
-        ));
+        if ($client === null) {
+            $this->client = Request::getDefaultGuzzleClient();
+        } else {
+            $this->client = $client;
+        }
     }
 
     /**
@@ -85,6 +85,18 @@ class Request
      */
     public function isSuccessful() {
         return ($this->status >=200) && ($this->status < 400);
+    }
+
+    private static $defaultClient = null;
+    public static function getDefaultGuzzleClient() {
+        if (self::$defaultClient === null) {
+            self::$defaultClient = new \GuzzleHttp\Client(array(
+                'headers' => Headers::getDefaultHeaders(),
+                'cookies' => true
+            ));
+        }
+
+        return self::$defaultClient;
     }
 
 }
