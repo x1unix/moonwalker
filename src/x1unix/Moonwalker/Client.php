@@ -19,14 +19,10 @@ class Client
     }
 
     private function getFrameUrl($kpId) {
-        try {
-            $script = Grabber::getPlayerScriptByKinopoiskId($kpId);
-            $path = Parser::getFrameUrlFromScript($script);
+        $script = Grabber::getPlayerScriptByKinopoiskId($kpId);
+        $path = Parser::getFrameUrlFromScript($script);
 
-            unset($script);
-            return $path;
-        } catch (MoonwalkerException $ex) {
-            throw new MoonwalkerNotFoundException("Failed to get movie: {$ex->getMessage()}");
-        }
+        unset($script);
+        return $path;
     }
 }
