@@ -10,12 +10,20 @@ class Parser
         'player_api' => '~(http://moonwalk.co/api/iframe/?)([A-Za-z0-9=&_\-\?\s\.]+)~',
     );
 
-    public static function getFrameUrlFromScript($script) {
+    /**
+     * Get player frame URL from response
+     *
+     * @param MoonwalkResponse $response
+     * @return string
+     * @throws MoonwalkerException
+     */
+    public static function getFrameUrlFromScript(MoonwalkResponse $response) {
+        $script = $response->getContent();
         $results = array();
         preg_match(self::$expressions['player_api'], $script, $results);
 
         if (!count($results)) throw new MoonwalkerException("Failed to extract frame src from player_api JS");
 
-        return $results[0];
+        return strval($results[0]);
     }
 }

@@ -3,20 +3,30 @@ namespace x1unix\Moonwalker;
 
 class Grabber
 {
+    /**
+     * Get Player's JS Script
+     * @param String|int $kpId Kinopoisk ID
+     * @return MoonwalkResponse
+     * @throws Exceptions\MoonwalkerException
+     */
     public static function getPlayerScriptByKinopoiskId($kpId)
     {
         $url = "http://moonwalk.co/player_api?kp_id={$kpId}";
         $client = new \GuzzleHttp\Client(array(
             'headers' => Headers::getDefaultHeaders()
         ));
-        $resp = $client->request('GET', $url);
+        $resp = new MoonwalkResponse($client->request('GET', $url));
 
         // Check response
-        $code = $resp->getStatusCode();
+        $code = $resp->isSuccessfull();
 
-        if ($code >= 301) throw new Exceptions\MoonwalkerException("Failed to get player script, HTTP Error: {$code}");
+        if (!$code) throw new Exceptions\MoonwalkerException("Failed to get player script, HTTP Error: {$resp->getCode()}");
 
-        return $resp->getBody()->getContents();
+        return $resp;
+    }
+
+    public static function getPlayerFrame($src) {
+
     }
 }
 
