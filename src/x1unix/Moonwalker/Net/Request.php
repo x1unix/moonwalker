@@ -29,7 +29,7 @@ class Request
 
     /**
      * Send GET Request
-     * @return \x1unix\Moonwalker\Moonwalk\Response
+     * @return Response
      */
     public function get() {
         return new Response($this->client->request('GET', $this->url));

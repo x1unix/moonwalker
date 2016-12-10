@@ -13,11 +13,11 @@ class Parser
     /**
      * Get player frame URL from response
      *
-     * @param MoonwalkResponse $response
+     * @param Net\Response $response
      * @return string
      * @throws MoonwalkerException
      */
-    public static function getFrameUrlFromScript(MoonwalkResponse $response) {
+    public static function getFrameUrlFromScript(Net\Response $response) {
         $script = $response->getContent();
         $results = array();
         preg_match(self::$expressions['player_api'], $script, $results);
