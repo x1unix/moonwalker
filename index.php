@@ -6,10 +6,8 @@ require('./vendor/autoload.php');
 use x1unix\Moonwalker;
 session_start();
 
-// $r = Moonwalker\Grabber::getPlayerScriptByKinopoiskId(770);
-$r = file_get_contents('./src/x1unix/Moonwalker/data/player_api');
-$results = array();
-preg_match('~(http://moonwalk.co/api/iframe/?)([A-Za-z0-9=&_\-\?\s\.]+)~', $r, $results);
+$c = new Moonwalker\MoonwalkerClient(null);
+$f = $c->getMovieByKinopoiskId(770);
+var_dump($f);
 
-if (count($results) > 0) var_dump($results[0]);
 ?>
